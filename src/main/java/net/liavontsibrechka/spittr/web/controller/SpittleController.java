@@ -3,6 +3,8 @@ package net.liavontsibrechka.spittr.web.controller;
 import net.liavontsibrechka.spittr.Spittle;
 import net.liavontsibrechka.spittr.data.SpittleRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,5 +33,20 @@ public class SpittleController {
     public List<Spittle> spittles(@RequestParam(value = "max", defaultValue = MAX_LONG_AS_STRING) long max,
                                   @RequestParam(value = "count", defaultValue = "20") int count) {
         return spittleRepository.findSpittles(max, count);
+    }
+
+    // BAD WAY of identifying an object
+    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    public String showSpittle(@RequestParam("spittle_id") long spittleId, Model model) {
+        model.addAttribute(spittleRepository.findOne(spittleId));
+        return "spittle";
+    }
+
+    // GOOD WAY of identifying an object
+    @RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
+    public String spittle(@PathVariable("spittleId") long spittleId, Model model) {
+        Spittle spittle = spittleRepository.findOne(spittleId);
+        model.addAttribute(spittle);
+        return "spittle";
     }
 }
