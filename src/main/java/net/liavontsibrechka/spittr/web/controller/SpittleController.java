@@ -2,14 +2,14 @@ package net.liavontsibrechka.spittr.web.controller;
 
 import net.liavontsibrechka.spittr.Spittle;
 import net.liavontsibrechka.spittr.data.SpittleRepository;
+import net.liavontsibrechka.spittr.web.exception.DuplicateSpittleException;
 import net.liavontsibrechka.spittr.web.exception.SpittleNotFoundException;
+import net.liavontsibrechka.spittr.web.form.SpittleForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -36,6 +36,27 @@ public class SpittleController {
         return spittleRepository.findSpittles(max, count);
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public String saveSpittle(SpittleForm spittleForm, Model model) {
+//        Not very good way of handling an exception:
+//          Two paths can be taken, each with a different outcome.
+//          It’d be simpler if saveSpittle() could focus on the happy path and
+//          let some other method deal with the exception
+//        try {
+//            spittleRepository.save(
+//                    new Spittle(spittleForm.getMessage(),
+//                            new Date(), spittleForm.getLatitude(), spittleForm.getLongitude()));
+//            return "redirect:/spittles";
+//        } catch (DuplicateSpittleException e) {
+//            return "error/duplicate";
+//        }
+        spittleRepository.save(
+                new Spittle(spittleForm.getMessage(),
+                        new Date(), spittleForm.getLatitude(), spittleForm.getLongitude()));
+        return "redirect:/spittles";
+    }
+
+
     // BAD WAY of identifying an object
     @RequestMapping(value = "/show", method = RequestMethod.GET)
     public String showSpittle(@RequestParam("spittle_id") long spittleId, Model model) {
@@ -52,5 +73,10 @@ public class SpittleController {
 
         model.addAttribute(spittle);
         return "spittle";
+    }
+
+    @ExceptionHandler(DuplicateSpittleException.class)
+    public String handleDuplicateSpittle() {
+        return "error/duplicate";
     }
 }
