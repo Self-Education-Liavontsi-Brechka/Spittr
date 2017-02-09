@@ -2,6 +2,7 @@ package net.liavontsibrechka.spittr.web.controller;
 
 import net.liavontsibrechka.spittr.Spittle;
 import net.liavontsibrechka.spittr.data.SpittleRepository;
+import net.liavontsibrechka.spittr.web.exception.SpittleNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +47,9 @@ public class SpittleController {
     @RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
     public String spittle(@PathVariable("spittleId") long spittleId, Model model) {
         Spittle spittle = spittleRepository.findOne(spittleId);
+
+        if (spittle == null) throw new SpittleNotFoundException();
+
         model.addAttribute(spittle);
         return "spittle";
     }
