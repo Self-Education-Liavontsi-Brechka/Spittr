@@ -2,12 +2,14 @@ package net.liavontsibrechka.spittr.web.controller;
 
 import net.liavontsibrechka.spittr.Spittle;
 import net.liavontsibrechka.spittr.data.SpittleRepository;
-import net.liavontsibrechka.spittr.web.exception.DuplicateSpittleException;
 import net.liavontsibrechka.spittr.web.exception.SpittleNotFoundException;
 import net.liavontsibrechka.spittr.web.form.SpittleForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 import java.util.List;
@@ -73,10 +75,5 @@ public class SpittleController {
 
         model.addAttribute(spittle);
         return "spittle";
-    }
-
-    @ExceptionHandler(DuplicateSpittleException.class)
-    public String handleDuplicateSpittle() {
-        return "error/duplicate";
     }
 }
