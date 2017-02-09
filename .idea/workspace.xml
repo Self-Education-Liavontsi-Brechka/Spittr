@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef8024d0-6ae0-4388-aca8-134e088fb6a4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/AppWideExceptionHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpittleController.java" afterPath="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpittleController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpitterController.java" afterPath="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpitterController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,26 +20,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/HomeController.java">
+      <file leaf-file-name="SpitterController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpitterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-              <folding />
+            <state relative-caret-position="487">
+              <caret line="50" column="46" lean-forward="true" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppWideExceptionHandler.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/AppWideExceptionHandler.java">
+      <file leaf-file-name="SpittleController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpittleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#404#405#0" expanded="true" />
-                <element signature="e#444#445#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="502">
+              <caret line="75" column="5" lean-forward="false" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,7 +97,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/config/MyServletInitializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/config/SpittrWebAppInitializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/config/WebConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpitterController.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/exception/SpittleNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/exception/SpittleNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/form/SpittleForm.java" />
@@ -109,6 +105,7 @@
         <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/exception/DuplicateSpittleException.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpittleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/AppWideExceptionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpitterController.java" />
       </list>
     </option>
   </component>
@@ -822,7 +819,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1486572283106</updated>
-      <workItem from="1486572287181" duration="10643000" />
+      <workItem from="1486572287181" duration="11244000" />
     </task>
     <task id="LOCAL-00001" summary="5.1.2 Setting up Spring MVC">
       <created>1486574302982</created>
@@ -908,7 +905,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486606274554</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="7.4. Advising controllers">
+      <created>1486606720336</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1486606720337</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -938,7 +942,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10643000" />
+    <option name="totallyTimeSpent" value="11244000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1050,7 +1054,8 @@
     <MESSAGE value="7.2. Processing multipart form data" />
     <MESSAGE value="7.3.1. Mapping exceptions to HTTP status codes" />
     <MESSAGE value="7.3.2. Writing exception-handling methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="7.3.2. Writing exception-handling methods" />
+    <MESSAGE value="7.4. Advising controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="7.4. Advising controllers" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -1425,16 +1430,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpitterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="39" column="78" lean-forward="false" selection-start-line="39" selection-start-column="78" selection-end-line="39" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.5.RELEASE/spring-web-4.3.5.RELEASE-sources.jar!/org/springframework/web/bind/annotation/ExceptionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1575">
@@ -1467,29 +1462,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.5.RELEASE/spring-web-4.3.5.RELEASE-sources.jar!/org/springframework/web/bind/annotation/ControllerAdvice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="60" column="18" lean-forward="false" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpittleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="75" column="5" lean-forward="false" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1501,6 +1478,32 @@
             <element signature="imports" expanded="true" />
             <element signature="e#404#405#0" expanded="true" />
             <element signature="e#444#445#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpittleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="75" column="5" lean-forward="false" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/liavontsibrechka/spittr/web/controller/SpitterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="50" column="46" lean-forward="true" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

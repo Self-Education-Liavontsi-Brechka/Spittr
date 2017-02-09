@@ -39,11 +39,16 @@ public class SpitterController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String processRegistration(@RequestPart(name = "profilePicture") Part profilePicture,
                                       @Valid Spitter spitter,
-                                      Errors errors) {
+                                      Errors errors,
+                                      Model model) {
         if (errors.hasErrors()) return "registerForm";
 
         spitterRepository.save(spitter);
-        return "redirect:/spitter/" + spitter.getUsername();
+        model.addAttribute("username", spitter.getUsername());
+        model.addAttribute("spitterId", spitter.getId());
+//        because the spitterId attribute from the model doesn’t map to any URL placeholders in the redirect,
+//        it’s tacked on to the redirect automatically as a query parameter.
+        return "redirect:/spitter/{username}";
     }
 
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
