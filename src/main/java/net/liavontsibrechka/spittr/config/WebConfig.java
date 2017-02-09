@@ -33,6 +33,18 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return resourceBundleMessageSource;
     }
 
+//    Limited way of registering multipart resolver (cannot specify limits and directory to save temp files)
+//    @Bean
+//    public MultipartResolver multipartResolver() {
+//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+//        multipartResolver.setUploadTempDir(new FileSystemResource("/tmp/spittr/uploads"));
+//        multipartResolver.setMaxUploadSize(2097152);
+//        multipartResolver.setMaxInMemorySize(0);
+//        return multipartResolver;
+//
+//        return new StandardServletMultipartResolver();
+//    }
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();

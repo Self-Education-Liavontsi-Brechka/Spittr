@@ -8,7 +8,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 
+import javax.servlet.http.Part;
 import javax.validation.Valid;
 
 @Controller
@@ -28,8 +30,15 @@ public class SpitterController {
         return "registerForm";
     }
 
+    /*
+    * Ways to accept requestPart argument:
+    *   byte[] profilePicture
+    *   MultipartFile profilePicture - requires multipart configuration
+    *   Part profilePicture - doesn't require multipart configuration
+    * */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String processRegistration(@Valid Spitter spitter,
+    public String processRegistration(@RequestPart(name = "profilePicture") Part profilePicture,
+                                      @Valid Spitter spitter,
                                       Errors errors) {
         if (errors.hasErrors()) return "registerForm";
 
