@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/spitters/me").hasRole("SPITTER")
                 // SpEL alternative
-                .antMatchers("/spitter/me").access("hasRole('ROLE_SPITTER') and hasIpAddress('192.168.1.2')")
+                .antMatchers("/spitter/{username}").access("hasRole('ROLE_SPITTER') and hasIpAddress('192.168.1.2')")
                 .antMatchers(HttpMethod.POST, "/spittles").authenticated()
                 .anyRequest().permitAll()
                 .and().requiresChannel()
