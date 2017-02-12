@@ -1,7 +1,9 @@
 package net.liavontsibrechka.spittr.config;
 
+import net.liavontsibrechka.spittr.data.SpitterRepository;
+import net.liavontsibrechka.spittr.security.SpitterUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -11,6 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    @Autowired
 //    DataSource dataSource;
+
+    @Autowired
+    SpitterRepository spitterRepository;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -26,20 +31,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .groupAuthoritiesByUsername("")
 //                .passwordEncoder(new StandardPasswordEncoder("53cr3t"));
 
-        auth.ldapAuthentication()
-                .userSearchBase("ou=people")
-                .userSearchFilter("(uid={0})")
-                .groupSearchBase("ou=groups")
-                .groupSearchFilter("member={0}")
+//        auth.ldapAuthentication()
+//                .userSearchBase("ou=people")
+//                .userSearchFilter("(uid={0})")
+//                .groupSearchBase("ou=groups")
+//                .groupSearchFilter("member={0}")
                 // configuring server location
-                .contextSource().url("ldap://habuma.com:389/dc=habuma,dc=com").and()
-//                or using Spring Security provided server
+//                .contextSource().url("ldap://habuma.com:389/dc=habuma,dc=com").and()
+        // or using Spring Security provided server
 //                .root("dc=habuma,dc=com").ldif("classpath:users.ldif")
                 // for password comparison
-                .passwordCompare()
-                .passwordEncoder(new Md5PasswordEncoder())
-                .passwordAttribute("passcode");
+//                .passwordCompare()
+//                .passwordEncoder(new Md5PasswordEncoder())
+//                .passwordAttribute("passcode");
 
-
+        auth.userDetailsService(new SpitterUserService(spitterRepository));
     }
 }
