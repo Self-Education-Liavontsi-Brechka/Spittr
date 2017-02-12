@@ -49,7 +49,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                // default login page
+//                .formLogin().and()
+                .formLogin().loginPage("/login").and()
+                .rememberMe().tokenValiditySeconds(2419200).key("spittrKey").and()
+                .logout().logoutSuccessUrl("/")
+                // for changing logout path of LogoutFilter
+//                .logoutUrl("/signout")
+                .and()
+                .httpBasic().realmName("Spittr").and()
+                .authorizeRequests()
                 .antMatchers("/spitters/me").hasRole("SPITTER")
                 // SpEL alternative
                 .antMatchers("/spitter/me").access("hasRole('ROLE_SPITTER') and hasIpAddress('192.168.1.2')")
