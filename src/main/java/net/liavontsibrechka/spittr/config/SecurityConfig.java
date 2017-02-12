@@ -1,10 +1,9 @@
 package net.liavontsibrechka.spittr.config;
 
-import net.liavontsibrechka.spittr.data.SpitterRepository;
-import net.liavontsibrechka.spittr.security.SpitterUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -14,14 +13,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    @Autowired
 //    DataSource dataSource;
 
-    @Autowired
-    SpitterRepository spitterRepository;
+//    @Autowired
+//    SpitterRepository spitterRepository;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("Leonti").password("IamProgrammer").roles("USER").and()
-//                .withUser("admin").password("superAdminPassword").roles("USER", "ADMIN");
+        auth.inMemoryAuthentication()
+                .withUser("Leonti").password("IamProgrammer").roles("USER").and()
+                .withUser("admin").password("superAdminPassword").roles("USER", "ADMIN");
 
 //        auth.jdbcAuthentication().dataSource(dataSource)
                 // custom queries
@@ -45,6 +44,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .passwordEncoder(new Md5PasswordEncoder())
 //                .passwordAttribute("passcode");
 
-        auth.userDetailsService(new SpitterUserService(spitterRepository));
+//        auth.userDetailsService(new SpitterUserService(spitterRepository));
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/spitters/me").hasRole("SPITTER")
+                // SpEL alternative
+                .antMatchers("/spitter/me").access("hasRole('ROLE_SPITTER') and hasIpAddress('192.168.1.2')")
+                .antMatchers(HttpMethod.POST, "/spittles").authenticated()
+                .anyRequest().permitAll()
+                .and().requiresChannel()
+                .antMatchers("/spitter/form").requiresSecure()
+                .antMatchers("/").requiresInsecure();
+        // for accepting csrf token properly in JSP
+        // “<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        // not very good at all
+//                .and().csrf().disable();
     }
 }
