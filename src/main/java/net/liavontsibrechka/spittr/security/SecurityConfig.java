@@ -1,4 +1,4 @@
-package net.liavontsibrechka.spittr.config;
+package net.liavontsibrechka.spittr.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

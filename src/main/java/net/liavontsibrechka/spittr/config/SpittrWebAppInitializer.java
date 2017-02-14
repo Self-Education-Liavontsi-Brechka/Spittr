@@ -1,5 +1,6 @@
 package net.liavontsibrechka.spittr.config;
 
+import net.liavontsibrechka.spittr.web.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;

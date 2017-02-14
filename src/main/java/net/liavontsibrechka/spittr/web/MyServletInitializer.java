@@ -1,4 +1,4 @@
-package net.liavontsibrechka.spittr.config;
+package net.liavontsibrechka.spittr.web;
 
 import org.springframework.web.WebApplicationInitializer;
 
