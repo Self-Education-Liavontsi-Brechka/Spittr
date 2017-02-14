@@ -33,6 +33,17 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return resourceBundleMessageSource;
     }
 
+    // Handler mapping to Spring's HTTP service
+//    @Bean
+//    public HandlerMapping httpInvokerMapping() {
+//        SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
+//        Properties mappings = new Properties();
+//        mappings.setProperty("/spitter.service",
+//                "httpExportedSpitterService");
+//        mapping.setMappings(mappings);
+//        return mapping;
+//    }
+
     // Handler mapping to Hessian service
 //    @Bean
 //    public HandlerMapping hessianMapping() {

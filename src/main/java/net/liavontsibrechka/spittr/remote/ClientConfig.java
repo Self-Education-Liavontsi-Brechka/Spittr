@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.caucho.HessianProxyFactoryBean;
+import org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean;
 import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
 import java.util.List;
@@ -26,6 +27,14 @@ public class ClientConfig {
     @Bean
     public HessianProxyFactoryBean hessiamSpitterService() {
         HessianProxyFactoryBean proxy = new HessianProxyFactoryBean();
+        proxy.setServiceUrl("http://localhost:8080/Spitter/spitter.service");
+        proxy.setServiceInterface(SpitterService.class);
+        return proxy;
+    }
+
+    @Bean
+    public HttpInvokerProxyFactoryBean httpSpitterService() {
+        HttpInvokerProxyFactoryBean proxy = new HttpInvokerProxyFactoryBean();
         proxy.setServiceUrl("http://localhost:8080/Spitter/spitter.service");
         proxy.setServiceInterface(SpitterService.class);
         return proxy;
