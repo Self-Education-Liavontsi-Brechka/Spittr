@@ -33,6 +33,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return resourceBundleMessageSource;
     }
 
+    // Handler mapping to Hessian service
+//    @Bean
+//    public HandlerMapping hessianMapping() {
+//        SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
+//        Properties mappings = new Properties();
+//        mappings.setProperty("/spitter.service", "hessianExportedSpitterService");
+//        mapping.setMappings(mappings);
+//        return mapping;
+//    }
+
 //    Limited way of registering multipart resolver (cannot specify limits and directory to save temp files)
 //    @Bean
 //    public MultipartResolver multipartResolver() {

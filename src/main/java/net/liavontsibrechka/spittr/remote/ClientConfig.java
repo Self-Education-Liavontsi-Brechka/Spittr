@@ -5,6 +5,7 @@ import net.liavontsibrechka.spittr.Spittle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.remoting.caucho.HessianProxyFactoryBean;
 import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
 import java.util.List;
@@ -20,6 +21,14 @@ public class ClientConfig {
         rmiProxy.setServiceUrl("rmi://localhost/SpitterService");
         rmiProxy.setServiceInterface(SpitterService.class);
         return rmiProxy;
+    }
+
+    @Bean
+    public HessianProxyFactoryBean hessiamSpitterService() {
+        HessianProxyFactoryBean proxy = new HessianProxyFactoryBean();
+        proxy.setServiceUrl("http://localhost:8080/Spitter/spitter.service");
+        proxy.setServiceInterface(SpitterService.class);
+        return proxy;
     }
 
     public List<Spittle> getSpittles(String userName) {
