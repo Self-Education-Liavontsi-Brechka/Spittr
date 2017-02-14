@@ -7,8 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.caucho.HessianProxyFactoryBean;
 import org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean;
+import org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean;
 import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 @Configuration
@@ -37,6 +40,17 @@ public class ClientConfig {
         HttpInvokerProxyFactoryBean proxy = new HttpInvokerProxyFactoryBean();
         proxy.setServiceUrl("http://localhost:8080/Spitter/spitter.service");
         proxy.setServiceInterface(SpitterService.class);
+        return proxy;
+    }
+
+    @Bean
+    public JaxWsPortProxyFactoryBean jaxWsSpitterService() throws MalformedURLException {
+        JaxWsPortProxyFactoryBean proxy = new JaxWsPortProxyFactoryBean();
+        proxy.setWsdlDocumentUrl(new URL("http://localhost:8080/services/SpitterService?wsdl"));
+        proxy.setServiceName("spitterService");
+        proxy.setPortName("spitterServiceHttpPort");
+        proxy.setServiceInterface(SpitterService.class);
+        proxy.setNamespaceUri("http://spitter.com");
         return proxy;
     }
 

@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.caucho.HessianServiceExporter;
 import org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter;
+import org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter;
 import org.springframework.remoting.rmi.RmiServiceExporter;
 
 @Configuration
@@ -33,5 +34,12 @@ public class ServiceConfig {
         exporter.setService(spitterService);
         exporter.setServiceInterface(SpitterService.class);
         return exporter;
+    }
+
+    @Bean
+    public SimpleJaxWsServiceExporter jaxWsExporter() {
+        SimpleJaxWsServiceExporter simpleJaxWsServiceExporter = new SimpleJaxWsServiceExporter();
+        simpleJaxWsServiceExporter.setBaseAddress("http://localhost:8888/services/");
+        return simpleJaxWsServiceExporter;
     }
 }
