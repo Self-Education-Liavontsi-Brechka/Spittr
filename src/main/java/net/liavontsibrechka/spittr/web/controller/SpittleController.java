@@ -71,7 +71,7 @@ public class SpittleController {
     public String spittle(@PathVariable("spittleId") long spittleId, Model model) {
         Spittle spittle = spittleRepository.findOne(spittleId);
 
-        if (spittle == null) throw new SpittleNotFoundException();
+        if (spittle == null) throw new SpittleNotFoundException(spittleId);
 
         model.addAttribute(spittle);
         return "spittle";
