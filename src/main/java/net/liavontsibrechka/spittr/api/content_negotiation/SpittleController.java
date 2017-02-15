@@ -1,4 +1,4 @@
-package net.liavontsibrechka.spittr.api;
+package net.liavontsibrechka.spittr.api.content_negotiation;
 
 import net.liavontsibrechka.spittr.Spittle;
 import net.liavontsibrechka.spittr.data.SpittleRepository;

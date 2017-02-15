@@ -1,4 +1,4 @@
-package net.liavontsibrechka.spittr.api;
+package net.liavontsibrechka.spittr.api.content_negotiation;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
