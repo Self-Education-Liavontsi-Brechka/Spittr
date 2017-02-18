@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "net.liavontsibrechka.spittr.web")
+@ComponentScan(basePackages = {"net.liavontsibrechka.spittr.web", "net.liavontsibrechka.spittr.security"})
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ViewResolver viewResolver() {

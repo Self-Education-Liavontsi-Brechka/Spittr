@@ -4,13 +4,9 @@ import net.liavontsibrechka.spittr.Spittle;
 import net.liavontsibrechka.spittr.data.SpittleRepository;
 import net.liavontsibrechka.spittr.web.exception.SpittleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -41,15 +37,15 @@ public class SpittleController {
 //    }
 
     //    With headers
-    @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<Spittle> saveSpittle(@RequestBody Spittle spittle, UriComponentsBuilder ucb) {
-        Spittle finalSpittle = spittleRepository.save(spittle);
-        HttpHeaders headers = new HttpHeaders();
+//    @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
+//    public ResponseEntity<Spittle> saveSpittle(@RequestBody Spittle spittle, UriComponentsBuilder ucb) {
+//        Spittle finalSpittle = spittleRepository.save(spittle);
+//        HttpHeaders headers = new HttpHeaders();
 //        URI location = new URI("http://localhost:8080/spittr/spittles/" + finalSpittle.getId());
-        URI location = ucb.path("/spittles/").path(String.valueOf(finalSpittle.getId())).build().toUri();
-        headers.setLocation(location);
-        return new ResponseEntity<>(finalSpittle, headers, HttpStatus.CREATED);
-    }
+//        URI location = ucb.path("/spittles/").path(String.valueOf(finalSpittle.getId())).build().toUri();
+//        headers.setLocation(location);
+//        return new ResponseEntity<>(finalSpittle, headers, HttpStatus.CREATED);
+//    }
 
 //    Handling exceptions with ResponseEntity and
 //    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
